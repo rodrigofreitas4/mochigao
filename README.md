@@ -1,6 +1,6 @@
 # Mochigão
 
-Site pessoal do mochilão solo de 113 dias pela Europa (julho–outubro de 2024): 32 países, 47 histórias, 49 lugares avaliados e um mapa pra acompanhar a rota inteira.
+Saí de Porto Alegre com uma mochila de 40 litros e voltei 113 dias depois, tendo passado por 32 países. Esse repositório é o site que guarda o que sobrou dessa viagem: 48 histórias contadas do jeito que aconteceram, 49 lugares avaliados com uma régua que eu inventei, um mapa pra percorrer a rota inteira e tudo que aprendi no caminho, pra quem quiser fazer o seu.
 
 🔗 **[Ver o site](#)** _(troque pelo link depois de publicar — veja o passo a passo mais abaixo)_
 
@@ -10,16 +10,16 @@ Site pessoal do mochilão solo de 113 dias pela Europa (julho–outubro de 2024)
 
 ## O que tem no site
 
-- **Mapa** — a rota completa da viagem, ponta a ponta
-- **Histórias** — os 47 capítulos, com fotos e vídeos de cada cidade, busca por palavra
-- **Cidades & Notas** — ranking de 49 lugares avaliados, com os critérios de nota e o "o que achei" de cada um
+- **Mapa** — a rota inteira, com o mochigão percorrendo o trajeto e "onde eu estava há X anos" pra qualquer data da viagem
+- **Histórias** — os 48 capítulos, com fotos e vídeos de cada cidade, busca por palavra, e um pop-up com setinhas pra ir passando de uma história pra outra
+- **Cidades & Notas** — ranking dos 49 lugares avaliados, com os critérios de nota, "o que achei" e sugestões de cada um
 - **A Viagem** — como o roteiro foi montado, burocracia do Espaço Schengen, o passe de trem, controle de orçamento
 - **Dicas** — pra quem quiser fazer o seu: como montar roteiro, Schengen, deslocamento, dinheiro, onde ficar, o que levar na mochila, apps de viagem
 - **Sobre** — agradecimentos
 
 ## Tecnologia
 
-Só HTML, CSS e JavaScript puro — sem framework, sem build, sem dependência de servidor. Um único arquivo `index.html` que lê a pasta `assets/` ao lado dele.
+Só HTML, CSS e JavaScript puro — sem framework, sem build, sem dependência de servidor. Um único arquivo `index.html` que lê a pasta `assets/` ao lado dele (o mapa interativo é outro arquivo HTML próprio, carregado por dentro do site).
 
 ## Estrutura de pastas
 
@@ -27,8 +27,9 @@ Só HTML, CSS e JavaScript puro — sem framework, sem build, sem dependência d
 index.html
 assets/
   fotos/      # fotos de cada história, comprimidas pra web
-  videos/     # vídeos de cada história, comprimidos pra web
-  img/        # mochigão, foto do hero, mapa da rota, ilustrações de fundo
+  videos/     # vídeos de cada história, comprimidas pra web
+  img/        # mochigão, foto do hero, ilustrações de fundo, favicon
+  mapa/       # o mapa interativo (arquivo HTML próprio)
 ```
 
 **Importante:** o `index.html` só funciona com a pasta `assets` do lado dele. Se for mover ou copiar o site, mova a pasta `assets` junto.
@@ -57,7 +58,7 @@ Isso deixa o site com um link público (tipo `https://seu-usuario.github.io/moch
 Na página do repositório recém-criado, vai ter um link **uploading an existing file**. Clique nele.
 
 1. Arraste pra lá o `index.html`, o `README.md` (o que eu te mandei) e a pasta `assets` inteira.
-   - Se o GitHub não aceitar arrastar a pasta `assets` de uma vez, arraste os arquivos de dentro dela mantendo a mesma estrutura (`assets/fotos/...`, `assets/videos/...`, `assets/img/...`) — o GitHub recria as pastas sozinho a partir do caminho dos arquivos.
+   - Se o GitHub não aceitar arrastar a pasta `assets` de uma vez, arraste os arquivos de dentro dela mantendo a mesma estrutura (`assets/fotos/...`, `assets/videos/...`, `assets/img/...`, `assets/mapa/...`) — o GitHub recria as pastas sozinho a partir do caminho dos arquivos.
 2. Espere o upload terminar (a pasta `assets` é grande, com fotos e vídeos — pode demorar alguns minutos dependendo da internet).
 3. Escreva uma mensagem no campo "Commit changes", por exemplo `primeira versão do site`.
 4. Clique em **Commit changes**.
@@ -71,9 +72,29 @@ Na página do repositório recém-criado, vai ter um link **uploading an existin
 5. Espere um ou dois minutos. Atualize a página — vai aparecer um link verde no topo, algo como:
    `https://seu-usuario.github.io/mochigao/`
 
-Esse é o link do site no ar. Pode compartilhar, colocar no Instagram, onde quiser.
+Esse é o link do site no ar. Pode compartilhar, colocar no Instagram, no LinkedIn, onde quiser.
 
-### 4. Atualizando o site depois
+### 4. Fazendo o preview do link ficar bonito (LinkedIn, WhatsApp, etc.)
+
+Quando você cola um link em redes sociais, elas mostram um preview (imagem + título + descrição) lendo umas tags chamadas Open Graph, que já estão configuradas no `index.html`. O único problema: essas tags precisam do link **completo** da imagem, e antes de publicar ninguém sabe qual vai ser esse link.
+
+Depois de ativar o GitHub Pages e saber o seu link (passo 3), abra o `index.html` pelo GitHub (clique no arquivo → ícone de lápis pra editar), procure por essas duas linhas perto do topo:
+
+```html
+<meta property="og:image" content="assets/img/mochigao.png">
+...
+<meta name="twitter:image" content="assets/img/mochigao.png">
+```
+
+E troque o `content` das duas pelo link completo, por exemplo:
+
+```html
+<meta property="og:image" content="https://seu-usuario.github.io/mochigao/assets/img/mochigao.png">
+```
+
+Salve (**Commit changes**). Alguns minutos depois, o preview do link já sai bonito. Se o LinkedIn tiver guardado uma versão antiga em cache, teste colar o link no [Post Inspector do LinkedIn](https://www.linkedin.com/post-inspector/) pra forçar ele a reler.
+
+### 5. Atualizando o site depois
 
 Sempre que quiser trocar alguma coisa (uma foto, um texto), é só voltar no repositório, abrir o arquivo, clicar no lápis (**Edit**) pra editar direto pelo navegador, ou fazer upload de novo pra substituir um arquivo. O GitHub Pages atualiza o site sozinho, alguns minutos depois de cada mudança.
 
